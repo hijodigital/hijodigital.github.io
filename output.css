@@ -2430,17 +2430,25 @@ li {
 }
 
 @font-face {
-  font-family: 'WorkSans';
+  font-family: 'Work Sans';
 
   src: url('./fonts/WorkSans/WorkSans-Light.ttf');
 }
 
 @font-face {
-  font-family: 'WorkSans';
+  font-family: 'Work Sans';
 
   src: url('./fonts/WorkSans/WorkSans-SemiBold.ttf');
 
   font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+
+  src: url('./fonts/WorkSans/WorkSans-LightItalic.ttf');
+
+  font-style: italic;
 }
 
 @media (min-width: 640px) {
