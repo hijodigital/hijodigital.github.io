@@ -459,28 +459,28 @@ h2, .h2 {
 h3, .h3 {
   font-family: "Work Sans", sans-serif;
   font-size: 1.25rem;
-  line-height: 1.75rem;
   font-weight: 700;
+  line-height: 2rem;
 }
 
 @media (min-width: 768px) {
   h3, .h3 {
     font-size: 1.5rem;
-    line-height: 2rem;
+    line-height: 2.5rem;
   }
 }
 
 h4, .h4 {
   font-family: "Work Sans", sans-serif;
   font-size: 1.125rem;
-  line-height: 1.75rem;
   font-weight: 700;
+  line-height: 1.75rem;
 }
 
 @media (min-width: 768px) {
   h4, .h4 {
     font-size: 1.25rem;
-    line-height: 1.75rem;
+    line-height: 2.25rem;
   }
 }
 
