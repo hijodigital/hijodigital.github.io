@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Fitbit data</title>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:light,semibold" rel="stylesheet">
+    <link href="../css/style.css" media="all" rel="stylesheet" />
+    <link href="style.css" media="all" rel="stylesheet" />
+    <link rel="icon" href="https://pages.github.com/favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="https://jbd44x.github.io/my-fitbit-data/page.html" />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <small><a href="/portfolio-2019-main">Home</a></small>
+    </nav>
+    <h1>My Fitbit data</h1>
+    <small>
+      <time datetime="2017-07-01 00:00">July, 2017</time>
+    </small>
+    <form class="lead">
+      <select name="metrics">
+        <option value="calories_burned">Calories burned</option>
+        <option value="minutes_fairly_active">Minutes fairly active</option>
+        <option value="minutes_very_active">Minutes very active</option>
+        <option value="steps" selected>Steps</option>
+      </select>
+    </form>
+    <svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 960 464"></svg>
+    <p>I have worn a Fitbit everyday, since I received one at Christmas. Six months of exported activities data can be seen above (body, food, and sleep data may also be exported). At a glance, my weekends appear to alternate between two extremes: being either the most active or least active days of my week. I appear to walk farther on weekends too.</p>
+    <footer>
+      <p><em>Data: My Fitbit</em></p>
+      <small><a href="#top">Back to top</a></small>
+    </footer>
+    <script src="chart.js"></script>
+  </body>
+</html>

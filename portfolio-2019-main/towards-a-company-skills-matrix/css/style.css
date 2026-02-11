@@ -1,0 +1,152 @@
+@media (min-width: 576px) {
+  .no-display {
+    display: none;
+  }
+}
+.skills-matrix {
+  display: none;
+}
+@media (min-width: 576px) {
+  .skills-matrix {
+    display: block;
+  }
+  .skills-matrix a,
+.skills-matrix a:focus,
+.skills-matrix a:hover,
+.skills-matrix a:active {
+    color: blue;
+    cursor: pointer;
+  }
+  .skills-matrix table {
+    border-spacing: 3px;
+    border-collapse: separate;
+    font-size: 16px;
+  }
+  .skills-matrix table th {
+    font-weight: lighter;
+    white-space: nowrap;
+    line-height: 0;
+  }
+  .skills-matrix table td {
+    width: 24px;
+    height: 24px;
+    background-color: #f6f6f0;
+    box-sizing: border-box;
+    border: 3px solid #f6f6f0;
+  }
+  .skills-matrix table td.skills-matrix--basic {
+    background-color: #d3ead2;
+    border-color: #d3ead2;
+  }
+  .skills-matrix table td.skills-matrix--projects {
+    background-color: #499145;
+    border-color: #499145;
+  }
+  .skills-matrix table td.skills-matrix--student {
+    border-color: #1d3a1d;
+  }
+  .skills-matrix table td.skills-matrix--teacher {
+    background-color: #1d3a1d;
+  }
+  .skills-matrix .skills-matrix__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  .skills-matrix .skills-matrix__top .skills-matrix__legend th:not(:first-child) {
+    padding-left: 20px;
+  }
+  .skills-matrix .skills-matrix__outer {
+    display: flex;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__inner {
+    flex: 1;
+    overflow-x: scroll;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__inner thead th {
+    height: 140px;
+    padding: 0;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__inner thead th:first-child {
+    position: sticky;
+    left: 0;
+    background-color: #ffffff;
+    z-index: 1;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__inner thead th.skills-matrix--total div {
+    transform: translate(0px, 46px) rotate(-90deg);
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__inner thead th div {
+    transform: translate(0px, 54px) rotate(-90deg);
+    width: 24px;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__inner tbody th {
+    position: sticky;
+    left: 0;
+    background-color: #ffffff;
+    z-index: 1;
+    font-weight: lighter;
+    text-align: left;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__inner tbody th div {
+    width: 116px;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__inner tbody td {
+    text-align: center;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__inner tbody td.skills-matrix--total {
+    background-color: transparent;
+    border: none;
+    line-height: 0;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__inner .skills-matrix--total div {
+    width: 40px;
+    color: #a7a9ab;
+    font-weight: lighter;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__filters {
+    width: 220px;
+    margin-left: 60px;
+    overflow: hidden;
+    font-size: 16px;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__filters a,
+.skills-matrix .skills-matrix__outer .skills-matrix__filters span,
+.skills-matrix .skills-matrix__outer .skills-matrix__filters .form-checkboxes > div {
+    white-space: nowrap;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__filters .skills-matrix__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__filters > fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__filters > fieldset:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__filters > fieldset legend {
+    font-weight: bold;
+  }
+  .skills-matrix .skills-matrix__outer .skills-matrix__filters > fieldset.skills-matrix__skill {
+    max-height: 210px;
+    overflow-y: scroll;
+  }
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+/*# sourceMappingURL=style.css.map */

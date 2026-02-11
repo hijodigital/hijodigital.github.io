@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Could a brown bear, a black bear, and a polar bear meet?</title>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:light,semibold" rel="stylesheet">
+    <link href="../css/style.css" media="all" rel="stylesheet" />
+    <link href="css/style.css" media="all" rel="stylesheet" />
+    <link rel="icon" href="https://pages.github.com/favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="https://jbd44x.github.io/could-brown-bear-black-bear-polar-bear-meet/page.html" />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://unpkg.com/versor@0.0.1/build/versor.min.js"></script>
+    <script src="https://unpkg.com/d3-inertia@0.0.4/build/d3-inertia.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <small><a href="/portfolio-2019-main">Home</a></small>
+    </nav>
+    <h1>Could a brown bear, a black bear, and a polar bear meet?</h1>
+    <small>
+      <time datetime="2017-12-06 00:00">December, 2017</time>
+    </small>
+    <div class="bears">
+      <p class="lead">The answer is: yes. In this post, I'll show you where with a data visualisation; I'll explain how it is constructed with <a href="https://d3js.org/" target="_blank">d3.js</a>; and then extend this example to demonstrate some more complex interactions.</p>
+      <h2>Bear range</h2>
+      <p>A brown bear, black bear, and polar bear could cross paths in northern parts of Canada or Alaska. We can see this in the data visualisation, below, which shows some of the (overlapping) areas over which different species of bear range. Such meetings are likely becoming more common as a warmer climate pushes brown bears further north, and polar bears further south, off of the sea ice, onto land. Sightings of polar-brown bear hybrids (<a href="http://sciencenordic.com/grizzly-polar-bear-hybrids-spotted-canadian-arctic" target="_blank">grolar bears</a>) are concrete evidence of such meetings.</p>
+      <div class="container-1"><svg height="600" width="600"></svg></div>
+      <figcaption>Meeting points</figcaption>
+      <p>In general, bears like to live in the north. In fact, no one species of bear lives exclusively south of the equator. The most southerly ranging are spectacled bears. These bears live in the Andes mountains of South America, and live as far south as Argentina.</p>
+      <div class="wrapper-for-2-3"><span class="container-2"><svg height="300" width="300"></svg></span><span class="container-3"><svg height="300" width="300"></svg></span></div>
+      <figcaption>Northerners</figcaption>
+      <p>Insights like these would be difficult to know from, and describe with, tables and charts. Therefore, this is an excellent use case for a data visualisation: the goal of which is to aid discovery, and explain something about the world.</p>
+      <h2>Web page cartography</h2>
+      <p>The data visualisations on this page are built with a JavaScript library called d3.js. With this library we can load large amounts of data, and construct visual representations of it with HTML, CSS and SVG. Data can be found from an increasing variety of sources, as more and more organisations make their data freely available to everyone. Of course, we are not limited to data downloads. Data could come from anywhere: from user data, captured by a website; or from a web service; or from another source.</p>
+      <p>D3.js can do many things, and is particularly good for cartography. My process for making these maps is as follows: first download, or trace, the geometry (polygons). Two geometry collections are required: the countries of the world, and the known range of terrestrial mammals. To work with this data I convert it into a more friendly format, called GeoJSON. Next, I filter out all mammals, except bears. I then filter out any redundant data properties, like country names, and add some new properties, like common species names. Finally, I simplify, reduce, and compress the data into another format, called TopoJSON. My data files are now, together, less than 200KB. Phew! All I need to do now is to write the JavaScript. This involves loading the data, projecting the spherical geometry onto a plane, and generating the SVG markup. In this case, I have used an orthographic projection because they are good for displaying globes, but many different projections are possible.</p>
+      <div class="container-4"><svg height="600" width="600"></svg></div>
+      <figcaption>Orthographic projection</figcaption>
+      <p>More specifically, what d3.js is doing here is projecting geographic coordinates into SVG path data. For each shape, like the outline of a country, a path element is generated. Each path element contains a path data attribute, which is assigned a list of instructions for drawing the shape. SVG is a lot like HTML and, like HTML, SVG elements can be selected and styled with property-value pairs. In this example, I've declared a class on each range shape, named according to the bear that ranges over that area. I've then targeted each class with a fill representing the bear's fur colour. So, the polar bear shape is filled with a cream colour, the brown bear with brown, and so on.</p>
+      <h2>Giant pandas</h2>
+      <p>Back to bears, which in Asia are generally much smaller – and friendlier – than elsewhere. The areas in which they inhabit are smaller too. Sadly most species in the region are classified as vulnerable, mainly due to a loss of their habitats, which are shrinking due to human activity. Giant panda's now occupy just a few mountain ranges in central China (red area, below); there are less than 2000 remaining in the wild.</p>
+      <div class="container-5"><svg height="300" width="300"></svg></div>
+      <figcaption>Panda country</figcaption>
+      <p>The good news for our bamboo eating friends is that, thanks to conservation efforts, giant panda numbers are increasing again. Their status was recently changed from 'endangered' to 'vulnerable', following a 17% population increase over a decade.</p>
+      <h2>Interactive globe</h2>
+      <p>All of the data visualisations, above, are generated by a single script and data set. I'm simply passing in different values for width, height, zoom, rotation etc. It would be a trivial matter to provide a user interface to enable any page visitor to pass in their own values, but let's instead make a globe that's more like the real thing.</p>
+      <div class="container-6"><svg height="600" width="600"></svg></div>
+      <figcaption>Give it a spin</figcaption>
+      <p>This globe shows the range of black bears (black area, above). It can be rotated by dragging it in any direction. The rotation applied to the globe results from the initial pointer selection and its subsequent end position. This method is made available by the <a href="https://github.com/Fil/d3-inertia" target="_blank">d3-inertia</a> extension, which builds upon the concept of versor dragging. The <a href="https://www.jasondavies.com/maps/rotate/" target="_blank">use of versors  to calculate rotation</a>, involves some complex mathematics, and we probably shouldn't go there.</p>
+      <p>If you have explored this globe, you may have guessed that there are two species of black bear: North American and Asian. They are very similar, and the most common species of bear – but they're not always easy to find. Black bears are good sleepers, and they can spend more than half of their lives hibernating. While they sleep their hearts may beat only eight times in a minute, and they can lose a third of their weight before they wake up.</p>
+      <p>And that about covers it. The only two species of bear that I haven't mentioned are sun bears and sloth bears. In regard to d3.js and cartography, another feature we could add would be to make the globe zoomable, but this is more appropriate to more complex and detailed geometries.</p>
+      <p>To learn more about the threats that bears face, I recommend the <a href="http://www.iucnredlist.org/" target="_blank">IUCN red list</a>. To learn more about the techniques used to make data visualisations like these, I recommend Mike Bostock's excellent series on <a href="https://medium.com/@mbostock/command-line-cartography-part-1-897aa8f8ca2c" target="_blank">command line cartography</a>. You may also want to checkout <a href="https://observablehq.com/" target="_blank">interactive notebooks</a> too.</p>
+      <footer>
+        <p><em>Data: Natural Earth Data + IUCN Red List</em></p>
+        <small><a href="#top">Back to top</a></small>
+      </footer>
+    </div>
+    <script src="js/map.js"></script>
+    <script src="js/globe.js"></script>
+  </body>
+</html>

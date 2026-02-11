@@ -1,0 +1,29 @@
+.dial {
+  font-size: 18px;
+}
+.year-group {
+  opacity: .4;
+}
+.year-group .lead-in-groove {
+  fill: none;
+  stroke: #000;
+}
+.year-group .tracks {
+  fill: #141414;
+}
+.year-group .run-out {
+  fill: #000;
+}
+.year-group .center-hole {
+  fill: #fff;
+}
+.year-group .band-artist {
+  text-anchor: end;
+  fill: none;
+}
+.year-group:hover {
+  opacity: 1;
+}
+.year-group:hover .band-artist {
+  fill: #444;
+}

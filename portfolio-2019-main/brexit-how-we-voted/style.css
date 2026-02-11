@@ -1,0 +1,102 @@
+body {
+  background: radial-gradient(#fff, #e1eff4);
+}
+ul.tabs.primary li.active a {
+  border-bottom: 1px solid #e9f3f7;
+}
+.page-header,
+.footer {
+  border-color: #fff;
+}
+.constituency path,
+.territory path {
+  stroke: #fff;
+  stroke-width: .5;
+  stroke-linejoin: round;
+}
+.constituency .q0,
+.territory .q0 {
+  fill: #1a2b60;
+}
+.constituency .q1,
+.territory .q1 {
+  fill: #22377c;
+}
+.constituency .q2,
+.territory .q2 {
+  fill: #2a4398;
+}
+.constituency .q3,
+.territory .q3 {
+  fill: #3150b4;
+}
+.constituency .q4,
+.territory .q4 {
+  fill: #3f5fca;
+}
+.constituency .q5,
+.territory .q5 {
+  fill: #5b77d2;
+}
+.constituency .q6,
+.territory .q6 {
+  fill: #778eda;
+}
+.constituency .q7,
+.territory .q7 {
+  fill: #93a5e1;
+}
+.constituency .q8,
+.territory .q8 {
+  fill: #afbce9;
+}
+.constituency .q9,
+.territory .q9 {
+  fill: #deb5bc;
+}
+.constituency .q10,
+.territory .q10 {
+  fill: #deb5bc;
+}
+.constituency .q11,
+.territory .q11 {
+  fill: #f6bbb7;
+}
+.constituency .q12,
+.territory .q12 {
+  fill: #f3a6a0;
+}
+.constituency .q13,
+.territory .q13 {
+  fill: #f0958e;
+}
+.constituency .q14,
+.territory .q14 {
+  fill: #ed7f78;
+}
+.constituency .q15,
+.territory .q15 {
+  fill: #eb6e66;
+}
+.constituency .q16,
+.territory .q16 {
+  fill: #e8594f;
+}
+.constituency .q17,
+.territory .q17 {
+  fill: #e6483d;
+}
+.constituency .q18,
+.territory .q18 {
+  fill: #e33326;
+}
+.constituency .q19,
+.territory .q19 {
+  fill: #d9291c;
+}
+.excerpt rect {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}

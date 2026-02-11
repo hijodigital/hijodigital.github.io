@@ -1,0 +1,197 @@
+$blue:                      #0000ff;
+$cell:                      24px;
+$emerald:                   #499145;
+$font-size:                 16px;
+$forest:                    #1d3a1d;
+$iron:                      #a7a9ab;
+$sand:                      #f6f6f0;
+$white:                     #ffffff;
+
+@media (min-width: 576px) {
+  .no-display {
+    display: none;
+  }
+}
+
+.skills-matrix {
+  display: none;
+
+  @media (min-width: 576px) {
+    display: block;
+
+    a, %a,
+    a:focus,
+    a:hover,
+    a:active {
+      color: blue;
+      cursor: pointer;
+    }
+
+    table {
+      border-spacing: 3px;
+      border-collapse: separate;
+      font-size: $font-size;
+
+      th {
+        font-weight: lighter;
+        white-space: nowrap;
+        line-height: 0;
+      }
+
+      td {
+        width: $cell;
+        height: $cell;
+        background-color: $sand;
+        box-sizing: border-box;
+        border: 3px solid $sand;
+
+        &.skills-matrix--basic {
+          background-color: lighten($emerald, 45%);
+          border-color: lighten($emerald, 45%);
+        }
+
+        &.skills-matrix--projects {
+          background-color: $emerald;
+          border-color: $emerald;
+        }
+
+        &.skills-matrix--student {
+          border-color: $forest;
+        }
+
+        &.skills-matrix--teacher {
+          background-color: $forest;
+        }
+      }
+    }
+
+    .skills-matrix__top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: $font-size;
+
+      .skills-matrix__legend {
+        th:not(:first-child) {
+          padding-left: 20px;
+        }
+      }
+    }
+
+    .skills-matrix__outer {
+      display: flex;
+
+      .skills-matrix__inner {
+        flex: 1;
+        overflow-x: scroll;
+
+        thead {
+          th {
+            height: 140px;
+            padding: 0;
+
+            &:first-child {
+              position: sticky;
+              left: 0;
+              background-color: $white;
+              z-index: 1;
+            }
+
+            &.skills-matrix--total {
+              div {
+                transform: translate(0px, 46px) rotate(-90deg);
+              }
+            }
+
+            div {
+              transform: translate(0px, 54px) rotate(-90deg);
+              width: $cell;
+            }
+          }
+        }
+
+        tbody {
+          th {
+            position: sticky;
+            left: 0;
+            background-color: $white;
+            z-index: 1;
+            font-weight: lighter;
+            text-align: left;
+
+            div {
+              width: 116px;
+            }
+          }
+
+          td {
+            text-align: center;
+
+            &.skills-matrix--total {
+              background-color: transparent;
+              border: none;
+              line-height: 0;
+            }
+          }
+        }
+
+        .skills-matrix--total {
+          div {
+            width: 40px;
+            color: $iron;
+            font-weight: lighter;
+          }
+        }
+      }
+
+      .skills-matrix__filters {
+        width: 220px;
+        margin-left: 60px;
+        overflow: hidden;
+        font-size: $font-size;
+
+        a,
+        span,
+        .form-checkboxes > div {
+          white-space: nowrap;
+        }
+
+        .skills-matrix__actions {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 20px;
+        }
+
+        > fieldset{
+          margin: 0;
+          padding: 0;
+          border: 0;
+
+          &:not(:last-child) {
+            margin-bottom: 20px;
+          }
+
+          legend {
+            font-weight: bold;
+          }
+
+          &.skills-matrix__skill {
+            max-height: 210px;
+            overflow-y: scroll;
+          }
+        }
+      }
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}

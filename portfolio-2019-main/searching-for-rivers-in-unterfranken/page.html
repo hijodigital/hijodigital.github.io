@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Searching for rivers in Unterfranken</title>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:light,semibold" rel="stylesheet">
+    <link href="../css/style.css" media="all" rel="stylesheet" />
+    <link href="css/style.css" media="all" rel="stylesheet" />
+    <link rel="icon" href="https://pages.github.com/favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="https://jbd44x.github.io/searching-for-rivers-in-unterfranken/page.html" />
+  </head>
+  <body>
+    <svg class="map" width="0" height="0" display="block"></svg>
+    <nav>
+      <small><a href="/portfolio-2019-main">Home</a></small>
+    </nav>
+    <h1>Searching for rivers in <em>Unterfranken</em></h1>
+    <small>
+      <time datetime="2018-03-09 00:00">March, 2018</time>
+    </small>
+    <p class="lead">One of the great things about working remotely is that I can work from wherever I  want to. So, this month I have swapped my city desk in London for one in the spa town of Bad Kissingen, Germany.</p>
+    <p>I've also had fun building search engines with <a href="https://www.elastic.co/" target="_blank">Elasticsearch</a>. In this post, I'm going to explore how it can be used to search for features on a map.</p>
+    <h2>Search indices</h2>
+    <p>Sitting here at my new desk, I'm leafing through an old textbook. At the back there is an index. It tells me on which pages certain keywords appear. So, if I want to read about something specific I can find the relevant page numbers quickly. Without the index I would have to scan through all the pages of the book to find what I'm interested in. Similarly, when we search for things on the internet – although we may not be aware of it – we are, likely, also using a (more sophisticated) index to make our search fast. We put questions to the index and get answers back. More accurately, with regard to Elasticsearch, we query the index by sending RESTful API requests, in the form of <a href="https://www.json.org/" target="_blank">JSON</a>, and results are returned.</p>
+    <h2>The JSON family</h2>
+    <p>JSON is a commonly used format for giving structure to data. Put simply, it expresses data as groups of name/value pairs, in a text string. For example:</p>
+<pre>
+{
+  "city": "Erlangen",
+  "country": "Germany"
+},
+{
+  "city": "Würzburg",
+  "country": "Germany"
+}
+</pre>
+    <p>Minified our example looks like this:</p>
+<pre>
+{"city":"Erlangen","country":"Germany"},{"city":"Würzburg","country":"Germany"}
+</pre>
+    <p>Often we are concerned with indexing fields of data, like a product record; or full text, like a blog post. Elasticsearch handles these very well; however, it can also index spatial data: map features, such as locations and boundaries. We use a special kind of JSON to describe map features, called <a href="http://geojson.org/" target="_blank">GeoJSON</a>. It looks like this:</p>
+<pre>
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [49.792762, 9.939119]
+  },
+  "properties": {
+    "city": "Würzburg",
+    "country": "Germany"
+  }
+}
+</pre>
+    <p>A geometry type may be a: <code>Point</code>, <code>LineString</code>, or <code>Polygon</code>; and there are multi types for these: <code>MultiPoint</code>, <code>MultiLineString</code>, and <code>MultiPolygon</code>. Several features, like the above location, can be contained within a <code>FeatureCollection</code>.</p>
+    <p>Bad Kissingen is one of many communities in the Lower Franconia region (<em>Unterfranken</em> in German). Like many of its neighbours, a river runs through it: the Fränkische Saale. The boundary of the community forms a single shape; it maps to the <code>Polygon</code> geometry type. The water courses that make up the river can be imagined as a series of lines joined together; they map to the <code>MultiLineString</code> type.</p>
+    <p>I've found some maps of Lower Franconia online, so that I can process all of the region's rivers and communities into <a href="http://ndjson.org/" target="_blank">NDJSON</a> (newline delimited – another variation of JSON). I create an Elasticsearch index, and load the data into it. Now I’m ready to search. <em>Gut, wir machen einen Test!</em></p>
+    <h2>Searching for rivers</h2>
+    <p>A simple term query tells me that there are 22 rivers and 360 communities in Lower Franconia. There are many more water courses in the downloaded data, but only 22 are defined as rivers. Time to try some more complex queries. I'll begin with the region's principle river, the river Main, which sounds like <em>Mine</em> in German. I wonder how many communities it flows through? The query I send to my index looks like this:</p>
+<pre>
+GET lower_franconia/default/_search
+{
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "term": {
+            "feature": "community"
+          }
+        },
+        {
+          "geo_shape": {
+            "geometry": {
+              "indexed_shape": {
+                "index": "lower_franconia",
+                "type": "default",
+                "id": "12",
+                "path": "geometry"
+              },
+              "relation": "intersects"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+</pre>
+    <p>This query is being run in a <code>filter</code> context. This means that relevance scores are not calculated: I'm not concerned with how well things match, but rather whether a match exists or does not. In this context, I specify an array of two items.</p>
+    <p>In the first item, I am specifying a <code>term</code> key with community features as a constraint. This means that only documents in my index which have a value of <code>community</code> in the <code>feature</code> field will be returned.</p>
+    <p>In the second item of the array, I have a <code>geo_shape</code> query specifying document number <code>12</code> (this document describes the river Main) and a relationship of <code>intersects</code> as the constraints.</p>
+    <p>Put simply, match all community shapes that intersect with a particular river line.</p>
+    <p>I get 91 hits. A quarter of all communities are on the Main. The result is formatted in – yes you guessed it – JSON. Although JSON is quite readable, it's not easy to understand at a glance. Better to create a data visualisation with <a href="https://d3js.org/" target="_blank">d3.js</a> so that the results can be understood instantly.</p>
+    <svg id="0" class="map" preserveAspectRatio="xMinYMin meet" viewBox="0 0 960 840"></svg>
+    <figcaption>Hey Elasticsearch, which communities does the river Main flow through?</figcaption>
+    <p>For more details about how this is done, see my previous post on <a href="https://jbd44x.github.io/could-brown-bear-black-bear-polar-bear-meet/page.html" target="_blank">web page cartography</a>. Next up, how many rivers are close by? If I want to stroll by a river this evening, but don't want to travel, say more than ten kilometres, what are my options?</p>
+    <svg id="1" class="map" preserveAspectRatio="xMinYMin meet" viewBox="0 0 960 840"></svg>
+    <figcaption>How many rivers are within ten kilometres of my desk?</figcaption>
+    <p>Four hits come back: the rivers Aschach, Fränkische Saale, of course, Thulba, and Premich. This query is slightly different from the previous one. This time I only want rivers to be returned. Also, I am specifying a new shape that does not exist in the index: a circle which is centred on my current location with a radius of ten kilometres.</p>
+    <p>One more. Where shouldn't I go if I want to walk by a river. For this query I use a <code>must_not</code> key to filter out the communities that intersect with any of the 22 rivers. I get 199 hits – just over half of the communities in Lower Franconia are without a river.</p>
+    <svg id="2" class="map" preserveAspectRatio="xMinYMin meet" viewBox="0 0 960 840"></svg>
+    <figcaption>Which communities do not have a river?</figcaption>
+    <h2>Real world application</h2>
+    <p>I have used the rivers and communities of Lower Franconia as a simple example to illustrate how map features can be indexed with Elasticsearch, and the query results visualised with d3.js. Could it have a practical application? Well, the index could be used, for example, to find out which communities to warn if a flood alert was issued for a particular river; or perhaps it could be used, in a drier region, to predict where droughts might cause problems for agriculture. Of course, we are not limited to river courses and community boundaries. Any combination of map features can be mapped and indexed and, therefore, there are many possible applications.</p>
+    <footer>
+      <p><em>Data: OpenStreetMap + Open Data Portal des Freistaats Bayern</em></p>
+      <small><a href="#top">Back to top</a></small>
+    </footer>
+    <div class="tooltip"></div>
+    <script src="bundle.js"></script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+form {
+  text-align: center;
+  margin: 32px 0 24px;
+}
+
+select {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+circle {
+  fill: #440080;
+  stroke: #dbb3ff;
+  opacity: .6;
+}
+
+text {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.day {
+  fill: #fdfaff;
+  text-anchor: middle;
+}
+
+.workout {
+  fill: #1b0033;
+}

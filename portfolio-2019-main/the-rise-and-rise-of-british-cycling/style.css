@@ -1,0 +1,45 @@
+.mf-toggle { display: flex; align-items: baseline; float: right; }
+
+.mf-toggle label:first-of-type { margin-right: 10px; }
+
+.axis, .axis-key-label, .dot-key-label { font-size: 12px; }
+
+.bar, .axis-key { fill: #edf3f8; }
+
+.gs-middle { fill: #ec8aac; }
+.gs-inner { fill: #fff; }
+
+.ts-middle { fill: #fabb00; }
+.ts-inner { fill: #fff; }
+
+.vs-middle { fill: #d91c1b; }
+.vs-inner { fill: #fff; }
+
+.dj-outer { fill: #f7f7f7; }
+.dj-inner { fill: #d91c1b; }
+
+.gj { fill: #81ee72; }
+
+.pj { fill: #ec8aac; }
+
+.yj { fill: #fabb00; }
+
+.gm-outer { fill: #a27e2f; }
+.gm-inner { fill: #c39738; }
+
+.r-base { fill: #fff; }
+.r-blue { fill: #1d77bd; }
+.r-red { fill: #c8203e; }
+.r-yellow { fill: #f9e100; }
+.r-green { fill: #35b44a; }
+.r-overlay {
+  fill: none;
+  stroke-width: 2;
+)}
+
+.cr-middle { fill: #ccc; }
+.cr-outer { fill: #fff; }
+
+.hr { fill: #fff; }
+
+.default { fill: #eee; }

@@ -1,0 +1,21 @@
+{
+  "name": "searching-for-rivers-in-lower-franconia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "d3": "^4.13.0",
+    "graph-scroll": "^1.0.2",
+    "speakingurl": "^14.0.1",
+    "topojson": "^3.0.2"
+  }
+}

@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Towards a company skills matrix</title>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:light,semibold" rel="stylesheet">
+    <link href="../css/style.css" media="all" rel="stylesheet" />
+    <link href="css/style.css" media="all" rel="stylesheet" />
+    <link rel="icon" href="https://pages.github.com/favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="https://jbd44x.github.io/towards-a-company-skills-matrix/page.html" />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <small><a href="/portfolio-2019-main">Home</a></small>
+    </nav>
+    <h1>Towards a company skills matrix</h1>
+    <small>
+      <time datetime="2018-09-21 00:00">September, 2018</time>
+    </small>
+    <p class="lead">A <em>skills matrix</em> lists people along one axis, and skills along another. At the intersections are indicators of whether or not a person possesses the skill, and if they do, perhaps, to what degree. In this post, I will describe how we developed our company skills matrix.</p>
+    <p>It is important for us to have a skills matrix, so that we know:</p>
+    <ul>
+      <li>What skills we are short of – this enables us to recruit new people who have those skills, or provide training opportunities to our own staff</li>
+      <li>Who has a skill at a project delivery level – this enables us to form the best teams for client projects</li>
+      <li>Who wants to increase a certain skill – this enables us to pair these staff, on projects, with more skilled staff</li>
+      <li>Who is currently learning a skill – this enables our staff to support each other and share knowledge</li>
+      <li>Who is able to coach others a particular skill</li>
+    </ul>
+    <p class="no-display message">You'll need a  wider screen to display the matrix.</p>
+    <div class="skills-matrix">
+      <p>Here is version one...</p>
+      <div class="skills-matrix__top">
+        <table class="skills-matrix__legend">
+          <tbody>
+          <tr>
+            <th>Basic</th>
+            <td class="skills-matrix--basic"></td>
+            <th>Projects</th>
+            <td class="skills-matrix--projects"></td>
+            <th>Student</th>
+            <td class="skills-matrix--student"></td>
+            <th>Teacher</th>
+            <td class="skills-matrix--teacher"></td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="skills-matrix__filters-display-toggle"><a>Hide filters</a>
+        </div>
+      </div>
+      <div class="skills-matrix__outer">
+        <div class="skills-matrix__inner"></div>
+        <form class="skills-matrix__filters">
+          <div class="skills-matrix__actions">
+            <a class="skills-matrix__check-all">Check all</a><a class="skills-matrix__clear-all">Clear all</a>
+          </div>
+          <fieldset class="skills-matrix__level">
+            <legend>Skill level</legend>
+            <div class="form-checkboxes">
+              <div>
+                <input class="skills-matrix__level form-checkbox" type="checkbox" id="basic" value="basic">
+                <label for="basic">Basic</label>
+              </div>
+              <div>
+                <input class="skills-matrix__level form-checkbox" type="checkbox" id="projects" value="projects">
+                <label for="projects">Projects</label>
+              </div>
+              <div>
+                <input class="skills-matrix__level form-checkbox" type="checkbox" id="student" value="student">
+                <label for="student">Student</label>
+              </div>
+              <div>
+                <input class="skills-matrix__level form-checkbox" type="checkbox" id="teacher" value="teacher">
+                <label for="teacher">Teacher</label>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="skills-matrix__skill">
+            <legend>Skill</legend>
+            <div class="form-checkboxes">
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="angular" value="angular">
+                <label for="angular">Angular</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="ansible" value="ansible">
+                <label for="ansible">Ansible</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="backbone" value="backbone">
+                <label for="backbone">Backbone</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="behat" value="behat">
+                <label for="behat">Behat</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="composer" value="composer">
+                <label for="composer">Composer</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="css" value="css">
+                <label for="css">CSS</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="docker" value="docker">
+                <label for="docker">Docker</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="drupal" value="drupal">
+                <label for="drupal">Drupal</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="elasticsearch" value="elasticsearch">
+                <label for="elasticsearch">Elasticsearch</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="episerver" value="episerver">
+                <label for="episerver">EpiServer</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="git" value="git">
+                <label for="git">Git</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="gulp" value="gulp">
+                <label for="gulp">Gulp</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="html5" value="html5">
+                <label for="html5">HTML5</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="java" value="java">
+                <label for="java">Java</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="jquery" value="jquery">
+                <label for="jquery">jQuery</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="kubernetes" value="kubernetes">
+                <label for="kubernetes">Kubernetes</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="javascript" value="javascript">
+                <label for="javascript">JavaScript</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="laravel" value="laravel">
+                <label for="laravel">Laravel</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="less" value="less">
+                <label for="less">Less</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="linux" value="linux">
+                <label for="linux">Linux</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="mysql" value="mysql">
+                <label for="mysql">MySQL</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="nginx" value="nginx">
+                <label for="nginx">NGINX</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="npm" value="npm">
+                <label for="npm">NPM</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="oauth" value="oauth">
+                <label for="oauth">OAuth</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="pattern-lab" value="pattern-lab">
+                <label for="pattern-lab">Pattern Lab</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="php" value="php">
+                <label for="php">PHP</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="postgres" value="postgres">
+                <label for="postgres">Postgres</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="python" value="python">
+                <label for="python">Python</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="rest" value="rest">
+                <label for="rest">REST</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="rabbitmq" value="rabbitmq">
+                <label for="rabbitmq">RabbitMQ</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="react" value="react">
+                <label for="react">React</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="redux" value="redux">
+                <label for="redux">Redux</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="sass" value="sass">
+                <label for="sass">Sass</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="solr" value="solr">
+                <label for="solr">Solr</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="symfony" value="symfony">
+                <label for="symfony">Symfony</label>
+              </div>
+              <div>
+                <input class="skills-matrix__skill form-checkbox" type="checkbox" id="wordpress" value="wordpress">
+                <label for="wordpress">Wordpress</label>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <figcaption>What JavaScript and CSS skills do we have?</figcaption>
+    </div>
+    <h2>Data capture</h2>
+    <p>There are three approaches to assessing and capturing skills data:</p>
+    <ol>
+      <li>Self assessment</li>
+      <li>Peer assessment</li>
+      <li>Machine assessment</li>
+    </ol>
+    <p>Self assessment is a fairly common approach to surveying staff skills. Often, a spreadsheet is shared amongst a company's staff, and each staff member is asked to grade themselves against a list of skills. One of the advantages of this approach is that an individual knows more about his or her own skill set better than anyone. It's also easier to capture and keep the data up-to-date because the whole company is providing data. The downside is that self assessments are highly subjective, influenced by any number of personal reasons.</p>
+    <p>To reduce the subjectivity of self assessing, it is probably best to avoid using too many grades, like: <em>poor</em>, <em>average</em>, <em>good</em>, <em>very good</em>, and <em>excellent</em>. Binary questions are, perhaps, better:</p>
+    <ol>
+      <li>I know the basics of this skill (yes/no)</li>
+      <li>I am confident in applying this skill to client projects (yes/no)</li>
+      <li>I am actively learning this skill (yes/no)</li>
+      <li>I am willing to teach this skill to others (yes/no)</li>
+    </ol>
+    <p>For example, if a developer feels confident that they could be part of a team that delivers a client project built mainly with <a href="https://reactjs.org/" target="_blank">React</a>, then they should register React as a <em>projects</em> skill. If they are not yet at this level, but can build applications with React, they should register it as a <em>basic</em> skill. If they are currently studying React, they should indicate that they are a <em>student</em>. If they feel able and want to teach React to others, then they should indicate that they can be a <em>teacher</em>.</p>
+    <p>Peer assessment goes further to make things more objective. An individual (or small group) who is familiar with all (or most of) a company's staff, can give a more balanced assessment of everyone. Also, one individual is likely to be more consistent in defining a skills list, rather than a free-for-all, which can happen if everyone is involved. The disadvantage is that one individual cannot know every detail about everyone's skills, and they must do all of the work to capture and maintain the data.</p>
+    <p>Another approach is to let a machine do the assessments. While developing the first version of our skills matrix, we tested an algorithm which crawled through all of our code repositories, putting every commit into an index. For each index entry, the algorithm analysed the code; determined what skills were employed to write the code; and then added the relevant tags to the entry – along with the commiter's name, the commit date, etc. So, for example, an entry might be tagged with <em>JavaScript</em> and <em>React</em>. The index could then be queried for the total commits by each developer, for every skill, and the results tabulated. The great thing about this approach is that it is zero work. The machine constantly crawls the code repositories, updating the index every few minutes. The machine is also free of bias, just recording the facts. The big downside is that it is limited to assessing skills that are easy to quantify. Also, the algorithm must be clever enough to identify every skill.</p>
+    <h2>Data visualisation and filtering</h2>
+    <p>Whichever way is used to capture data, a matrix is a good way to visualise it. It's certainly possible to create something in a spreadsheet, with pivot tables and conditional formatting. However, spreadsheets can become neglected over time, and multiple versions can appear (and diverge).</p>
+    <p>Our skills matrix will get its data from our company intranet user accounts. These accounts are owned by our staff, who may edit them as they choose. For each account, we can fetch the given skills as <a href="https://www.w3schools.com/Js/js_objects.asp" target="_blank">objects</a>, which look like this:</p>
+<pre>
+{ 
+  "name": "Chris White", 
+  "skill": "JavaScript",
+  "basic": true, 
+  "projects": true, 
+  "student": false, 
+  "teacher": false 
+} 
+</pre>
+    <p>With objects like these, the matrix, above, is generated with <a href="https://d3js.org/" target="_blank">d3.js</a>.</p>
+    <p>The inspiration for the two checkboxes filters (<em>Skill level</em> and <em>Skill</em>) is an online shop. Let's say I want to buy a pair of new shoes. The starting point of my search is with every pair of shoes in the shop. I refine my search by <em>type</em>, then by <em>size</em>, and finally let's say I want them in the <em>colour</em> blue. I now have a shortlist, from which I can examine the details of the pairs I like.</p>
+    <p>Here, instead of returning a list of shoes after every refinement, we return a skills matrix. We can start will all of the data, or, if we prefer, we can begin with nothing.</p>
+    <h2>Beyond a skills matrix</h2>
+    <p>The data object which powers our skills matrix is both simple and versatile. Therefore, it could easily be used for generating individual skills profiles (resumes/CVs). With the addition of a timestamp property, long term trends of growing and declining skills could be measured. In fact, the data could have many uses for exploring which skills exist in our company, seeing in which direction they are trending, for promoting them outside of our company...and probably more uses I can't think of.</p>
+    <footer>
+      <small><a href="#top">Back to top</a></small>
+    </footer>
+    <script src="js/table.js"></script>
+  </body>
+</html>

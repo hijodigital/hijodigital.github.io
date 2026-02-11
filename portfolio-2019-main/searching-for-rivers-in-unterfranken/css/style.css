@@ -1,0 +1,40 @@
+.map path { fill: none; pointer-events: all }
+.community path { stroke: #d9dcc8; fill: #eff0ea; }
+.community path:hover, .community path:active { fill-opacity: .5 }
+.graph-scroll-active .active path {
+  transition: fill-opacity .5s linear .5s;
+  fill: #fff8f8
+}
+.graph-scroll-active .active path:hover,
+.graph-scroll-active .active path:active { fill: white }
+
+.river { stroke: #22b3d2; stroke-linecap: round }
+text { fill: #22b3d2; font: 12px sans-serif }
+
+.range {
+  fill: #fff8f8;
+  fill-opacity: 0;
+  stroke: #fff8f8;
+  stroke-width: 3;
+  stroke-opacity: 0;
+}
+.graph-scroll-active .range {
+  fill-opacity: .3;
+  transition: fill-opacity .5s linear .5s;
+  stroke-opacity: 1;
+}
+.desk { fill: #fff8f8; fill-opacity: 0 }
+.graph-scroll-active .desk { fill-opacity: 1 }
+
+.tooltip {
+  position: absolute;
+  background: #f7f7f7;
+  color: black;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  box-shadow: 1px 2px 15px -2px #bbb;
+  text-align: center;
+  font: 12px sans-serif;
+  pointer-events: none;
+  opacity: 0;
+}

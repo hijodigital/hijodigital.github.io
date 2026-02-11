@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keys to web accessibility</title>
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:light,semibold" rel="stylesheet">
+  <link href="../css/style.css" media="all" rel="stylesheet" />
+  <link href="css/style.css" media="all" rel="stylesheet" />
+  <link rel="icon" href="https://pages.github.com/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://jbd44x.github.io/keys-to-web-accessibility/page.html" />
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+  <nav>
+    <small><a href="/portfolio-2019-main">Home</a></small>
+  </nav>
+  <h1>Keys to web accessibility</h1>
+  <small>
+    <time datetime="2014-01-25 00:00">January, 2014</time>
+  </small>
+  <h2>Why create accessible websites?</h2>
+  <p>If you think about it, we interact with our desktop computers mostly with our hands and our eyes. Our hands are on the keyboard or mouse; our eyes are looking at the screen. However, some users cannot make use of a screen or a mouse. They may be blind, or have low vision, or may not have fine motor skills with their wrists, hands and fingers.</p>
+  <p>If we don't make our websites universally accessible, we risk losing out on the contributions these users have to make: their ideas, donations, bug fixes, purchases, stories etc.</p>
+  <p>Users who cannot see a screen, or who cannot see it well, may interact with their computer by hearing: <em>aural interaction</em>. Users who cannot use a mouse might rely on <em>keyboard interaction</em>, but a bunch of <a href="http://www.w3.org/WAI/PF/aria/terms#def_at" target="_blank">assistive technologies</a> exist:</p>
+  <blockquote>
+    <ul>
+      <li>Screen magnifiers, which are used to enlarge and improve the visual readability of rendered text and images</li>
+      <li>Screen readers, which are most-often used to convey information through synthesized speech or a refreshable Braille display</li>
+      <li>Text-to-speech software, which is used to convert text into synthetic speech</li>
+      <li>Speech recognition software, which is used to allow spoken control and dictation</li>
+      <li>Alternate input technologies (including head pointers, on-screen keyboards, single switches, and sip/puff devices), which are used to simulate the keyboard</li>
+      <li>Alternate pointing devices, which are used to simulate mouse pointing and clicking.</li>
+    </ul>
+    <small>
+      <cite>Source: W3C</cite>
+    </small>
+  </blockquote>
+  <p>However, accessibility is not just an issue for users with impaired vision or motor skills; other groups that need to be considered include deaf users and users with learning disabilities.</p>
+  <h2>Aural interaction and screen readers</h2>
+  <p>A visual interface expresses information about the state of a web page, or application, through a visual language. For example, links are a different colour to the rest of the text indicating that, if clicked, another page will load. Also, a link's colour may change if the cursor hovers over it. The cursor, too, may change from an arrow into a pointer. The problem is that users who cannot see a visual interface receive none of these visual cues. One way to overcome this problem is to express this basic language through speech: aural interaction.</p>
+  <p>A screen reader does precisely this. It attempts to communicate the content, structure, and express the state of a page by reading it to the user. Some, also, sound alerts to indicate what type of interface is in focus (earcons).</p>
+  <p>I use the <a href="http://www.chromevox.com/" target="_blank">ChromeVox</a> screen reader. It's a free extension for Chrome and is controlled via keyboard shortcuts. Other screen readers include <a href="http://www.apple.com/uk/accessibility/osx/voiceover/" target="_blank">VoiceOver</a>, <a href="http://www.nvaccess.org/" target="_blank">NVDA</a>, and <a href="http://www.freedomscientific.com/jaws-hq.asp" target="_blank">JAWS</a>. If, like me, you decide to install ChromeVox you'll probably want to switch it off at some point. To make ChromeVox inactive, on a PC keyboard, it's: <kbd>Ctrl</kbd>-<kbd>Alt</kbd>+<kbd>A</kbd>+<kbd>A</kbd>. To disable ChromeVox entirely:</p>
+  <ol>
+    <li>drop down the browser menu and select <em>Tools > Extensions</em></li>
+    <li>uncheck the <em>Enabled</em> box.</li>
+  </ol>
+  <p>In the future, it may come to pass that very small devices, which have very limited screen sizes, like a wrist watch or glasses, are better suited to aural interaction than visual interaction. Already, Apple’s operating system employs aural interaction through <a href="https://www.apple.com/ios/siri/" target="_blank">Siri</a>. Google, also, has something similar. So, we may find that aural interaction has a bigger future as something that is beneficial to all users.</p>
+  <h2>Keyboard interaction, special keys and shortcuts</h2>
+  <p>On a web page/application, the 'special' keys – <kbd>Tab</kbd>, <kbd>Space</kbd>, <kbd>Esc</kbd> etc. – can perform generic keyboard interactions. They move the focus to the next or previous element, or they open or close something, or they start or stop a process. Sometimes, their functions can be reversed or altered by holding down the <kbd>Shift</kbd>, <kbd>Ctrl</kbd>, or <kbd>Alt</kbd> keys simultaneously. A well designed keyboard interaction should behave in a way that a user would intuitively expect it to.</p>
+  <p>Keyboard shortcuts, on the other hand, simplify a specific interaction. They tend to be letter keys, often in combination with <kbd>Shift</kbd>, <kbd>Ctrl</kbd>, or <kbd>Alt</kbd>. There are two types:</p>
+  <ol>
+    <li>action shortcuts do things like: save, spell check, or favourite</li>
+    <li>whereas navigation shortcuts jump between different regions, like jumping from comment to comment without having to tab through the elements of each one.</li>
+  </ol>
+  <p>Both types reduce the time and key strokes required to perform an interaction.</p>
+  <p>Users who cannot see the position of the cursor on the screen, or who do not possess fine motor skills in their hands, often rely on the keyboard. However, keyboard interaction can be useful for other types of user as well. Advanced users sometimes choose to interact with a web page/application via the keyboard because the interaction is faster. Here, for example, are the <a href="https://support.google.com/mail/answer/6594?hl=en" target="_blank">keyboard shortcuts for Gmail</a> users. Some of the shortcuts can be used immediately, for others you will need to enable the keyboard shortcuts setting first:</p>
+  <ol>
+    <li>in Gmail, click the gear in the top right and select <em>Settings</em></li>
+    <li>find the <em>Keyboard shortcuts</em> section and select <em>Keyboard shortcuts on</em></li>
+    <li>click <em>Save Changes</em> at the bottom of the page.</li>
+  </ol>
+  <h2>Creating a logical DOM</h2>
+  <p>The Document Object Model (DOM) is an API for HTML and XML documents. It defines these documents as tree structures, which can be accessed and manipulated.</p>
+  <p>Screen readers look into the DOM, not at what is displayed on the web page/application. Keyboard-only users navigate the DOM in order, from top to bottom, moving focus to navigate up and down. Blind and low-vision users will, likely, be unaware if elements on the web page have been visually re-ordered with CSS. This is why it's important to have DOM elements ordered logically. For example:</p>
+<pre>
+&lt;style&gt;.bottom { position: absolute; bottom: 0 }&lt;style&gt;
+&lt;footer class="bottom"&gt;<em>More text</em>&lt;/footer&gt;
+&lt;article&gt;<em>Text</em>&lt;/article&gt;
+</pre>
+  <p>could be better written:</p>
+<pre>
+&lt;article&gt;<em>Text</em>&lt;/article&gt;
+&lt;footer&gt;<em>More text</em>&lt;/footer&gt;
+</pre>
+  <p>For the same reason, it's important to have parts of a <a href="http://www.w3.org/TR/wai-aria-1.1/#widget" target="_blank">widget</a> (user interface object) grouped together. Splitting up a drop-down menu from its submit button, for example, creates DOM confusion.</p>
+  <h2>Adding key handlers</h2>
+  <p>For complex widgets, which are unable to use semantic markup, it's a good idea to add key handlers so that users can interact with them via the keyboard. In this code, the example function can be called by clicking, or by moving the focus and hitting <kbd>A</kbd>:</p>
+<pre>
+&lt;div tabindex="0" onclick="example()" onkeydown="return shortcut(event)"&gt;<em>Text</em>&lt;/div&gt;
+&lt;script&gt;
+  function shortcut(event) {
+    if (event.keyCode == 65) example();
+  }
+  function example() {
+    alert("<em>More text</em>");
+  }
+&lt;/script&gt;
+</pre>
+  <p>It's good practice to <a data-cke-saved-href="http://www.w3.org/WAI/PF/aria-practices/#aria_ex" href="http://www.w3.org/WAI/PF/aria-practices/#aria_ex" target="_blank">use keys that intuitively behave in the way a user would expect</a>. So the <kbd>▼</kbd> key should probably move something downwards, for instance.</p>
+  <h2>Managing focus</h2>
+  <p>For keyboard-only users you can think of focus as their cursor. Focus is moved forwards with the  <kbd>Tab</kbd> key, backwards with <kbd>Shift</kbd>-<kbd>Tab</kbd>, and it can jump to another region via a keyboard shortcut.</p>
+  <p>Most browsers display focus as an outline around the focussed element. Some users cannot see this outline, but they can still be aware of where focus is, if it's managed correctly.</p>
+  <p>In a complex widget, where the inclusion of semantic markup is not possible, focus can easily get lost or unintentionally reset. This can be very frustrating for keyboard-only users. A fix for this is to use the <code>tabindex</code> attribute. This attribute makes elements like <code>div</code> and <code>span</code> keyboard focusable and keyboard inter-actable. It adds elements into the logical tab order – if you pass it a value of zero – or into a customised tab position:</p>
+<pre>
+&lt;!-- Logical tab order --&gt;
+&lt;div onclick="" tabindex="0"&gt;<em>Text</em>&lt;/div&gt;
+&lt;!-- Customised tab position --&gt;
+&lt;div onclick="" tabindex="3"&gt;<em>Text</em>&lt;/div&gt;
+</pre>
+  <p>For use cases where the focus behaviour is confusing or unhelpful, and which <code>tabindex</code> cannot fix, use the JavaScript: <code>focus.element</code> to customise how focus gets set on your web page or application. In this simple example, focus is returned to the button after the function has executed:</p>
+<pre>
+&lt;button id="exit" onclick="example()"&gt;<em>Exit</em>&lt;/button&gt;
+function example() {
+  ...
+  $("exit").focus();
+}
+</pre>
+  <h2>Describing images and forms</h2>
+  <p>The <code>alt</code> attribute is set on the <code>img</code> element; it specifies alternative information for users who cannot see an image. All images should have one. If an image is missing this attribute, the screen reader will read out the file name of the image – very annoying for the user, if the file name is a long string of random characters and numbers. For decorative images the <code>alt</code> attribute should be set to an empty string. This tells a screen reader to skip over it. For all other images, provide a concise informative desciption of the image. For <a href="http://www.w3.org/TR/2013/WD-html-longdesc-20130716/#use-cases" target="_blank">use cases where you need to provide a long description</a>, add a <code>longdesc</code> attribute as well.</p>
+  <p>Form elements should also be given a description. Without a description screen readers will not announce what the user is supposed to enter into a form field. Use the <code>label</code> element to solve this problem, like this:</p>
+<pre>
+&lt;label for="user"&gt;Username:&lt;/label&gt;
+&lt;input type="text" id="user" /&gt;
+&lt;label for="pass"&gt;Password:&lt;/label&gt;
+&lt;input type="password" id="pass" /&gt;
+</pre>
+  <h2>Adding semantics</h2>
+  <p>A problem that screen readers often face is drawing sufficient <a href="http://www.w3.org/TR/wai-aria-1.1/#def_semantics" target="_blank">semantic</a> meaning from a document.</p>
+  <p>Semantics are important, for example, in defining what a <a href="http://www.w3.org/TR/wai-aria-1.1/#def_widget" target="_blank">widget</a> does. If the available information is limited to just element names, like <code>div</code> or <code>span</code> – which don't mean much – screen readers will not announce what a widget does, nor that a user can interact with it. Also, by default, 'divs' and 'spans' are not focused and do not receive keyboard events. Where possible, it's much better to use <a href="http://diveintohtml5.info/semantics.html" target="_blank">more meaningful markup</a>. And not only for widgets; the structure of a document can be given better semantics too, helping screen readers to better understand it. Like using the <code>nav</code> element to markup main navigation links.</p>
+  <p>The following code will not be understood as an article, nor will a button be announced by a screen reader, nor will the button do anything by hitting the enter key:</p>
+<pre>
+&lt;div id="article"&gt;
+  &lt;p&gt;Text&lt;/p&gt;
+  &lt;div class="button"&gt;Submit&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+  <p>All three problems are solved, if semantic markup is used (it's much cleaner too):</p>
+<pre>
+&lt;article&gt;
+  &lt;p&gt;Text&lt;/p&gt;
+  &lt;button&gt;Submit&lt;/button&gt;
+&lt;/article&gt;
+</pre>
+  <h2>ARIA attributes</h2>
+  <p>Complex <a href="http://www.w3.org/TR/wai-aria-1.1/#def_widget" target="_blank">widgets</a> – like a <a href="http://sorgalla.com/jcarousel/" target="_blank">carousel</a> – create more engaging and user-friendly interfaces. They're great for users who have good vision, but not always so great for those using a screen reader. Problems arise if understanding breaks down between the widget running in the user agent and the <a href="http://www.w3.org/TR/wai-aria-1.1/#def_accessibility_api" target="_blank">accessibility API</a>. This breakdown causes the assistive technology to fail too.</p>
+  <p>To support understanding of complex widgets, two types of attribute can help to identify what a widget is and its current state, providing the missing semantics to accessibility APIs and assistive technologies. The two types are: <em>roles</em>, and <em>ARIA states and properties</em>.</p>
+  <p>Roles are set on elements, with the <code>role</code> attribute, allowing them to be understood as a type of <a href="http://www.w3.org/TR/wai-aria-1.1/#def_object" target="_blank">object</a> (widget). Their value remains static.</p>
+  <p>Roles are combined with ARIA states and properties. These have dynamic values that change accordingly as a result of user interaction.</p>
+  <p>For example, <code>role="button"</code> and <code>aria-pressed="[boolean value]"</code> can be used to model an <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role?redirectlocale=en-US&amp;redirectslug=Accessibility%2FARIA%2FARIA_Techniques%2FUsing_the_button_role" target="_blank">ARIA toggle button</a>. If the element being modeled is not focused, or does not receive keyboard events by default, then <code>tabindex="0"</code> should be included too. The <code>aria-pressed</code> value will switch between <code>true</code> and <code>false</code> when the button is activated. A screen reader can now understand the role and changing state of this button widget.</p>
+  <footer>
+    <small><a href="#top">Back to top</a></small>
+  </footer>
+</body>
+</html>

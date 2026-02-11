@@ -1,0 +1,82 @@
+.bears .sphere { fill: #f3f6f7 }
+
+.bears .graticule {
+  fill: none;
+  stroke: #a9a9a9;
+  stroke-width: .5;
+  stroke-dasharray: 2, 2
+}
+
+.bears .country, .bears .land { fill: #fff; stroke: #e2e2e2 }
+
+.bears .sun-bear { fill: #150d09 }
+.bears .sloth-bear { fill: #0e0906 }
+.bears .brown-bear { fill: #84562e }
+.bears .asian-black-bear { fill: #0b0705 }
+.bears .american-black-bear { fill: #040202 }
+.bears .spectacled-bear { fill: #120b08 }
+.bears .polar-bear { fill: #efefcf }
+.bears .giant-panda { fill: #000 }
+
+.bears .range { fill-opacity: .5; stroke: none }
+.bears .area:hover .range:hover { fill-opacity: .7 }
+.bears .area:hover .range:not(:hover) { fill-opacity: .1 }
+
+.bears .tooltip {
+  position: absolute;
+  background: #000;
+  color: #fff;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 5px;
+  text-align: center;
+  font: 12px sans-serif;
+  pointer-events: none;
+}
+
+.bears .container-1 { max-width: 600px; max-height: 600px; margin: 0 auto }
+.bears .wrapper-for-2-3 { max-width: 600px; max-height: 300px; margin: 0 auto }
+.bears .container-4 { max-width: 300px; max-height: 300px; margin: 0 auto }
+.bears .container-5 { max-width: 300px; max-height: 300px; margin: 0 auto }
+.bears .container-6 { max-width: 600px; max-height: 600px; margin: 0 auto }
+
+.bears .container-4 .sphere { fill: none }
+.bears .container-4 .country { display: none }
+.bears .container-4 .range { fill-opacity: .2 }
+
+.bears div.container-5 [class*="-bear"] { display: none }
+.bears .container-5 { border: 1px solid #e2e2e2 }
+.bears .container-5 .giant-panda { fill: #ff0000 }
+
+.bears .video-container { max-width: 500px; margin-left: auto; margin-right: auto; }
+.bears .iframe-container {
+  position:relative;
+  padding-bottom:56.25%;
+  padding-top:30px;
+  height:0;
+  overflow:hidden;
+}
+.bears .iframe-container iframe,
+.bears .iframe-container object,
+.bears .iframe-container embed {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+.bears .container-6 svg {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+.bears .container-6 svg.dragging {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+.bears .container-6 .range { fill-opacity: .2 }
+.bears .container-6 .asian-black-bear,
+.bears .container-6 .american-black-bear { fill-opacity: .8 }
