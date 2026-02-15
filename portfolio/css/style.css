@@ -1,0 +1,102 @@
+/* Base styles */
+a:link, a:visited, a:hover, a:active { color: blue; text-decoration: none }
+
+blockquote { background: #fafafa; margin: 0; padding: 30px }
+blockquote ul { margin: 0; padding-left: 20px }
+blockquote cite { display: block; text-align: right }
+
+body {
+  max-width: 960px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0 20px 0;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 35px
+}
+
+code { padding: 5px }
+
+figcaption { margin: 16px 0; font-style: italic; text-align: center }
+
+@font-face {
+  font-family: 'FatFrank';
+  src: url('../fonts/FatFrank/FatFrank-Regular.woff2') format('woff2'),
+  url('../fonts/FatFrank/FatFrank-Regular.woff') format('woff');
+}
+
+footer { padding: 40px 0 60px }
+footer p:first-child { margin-top: 0 }
+footer p:last-child { margin-bottom: 0 }
+
+h1, h2, h3 { font-family: FatFrank, sans-serif; font-weight: normal }
+h1 {
+  margin: 10px 0 10px;
+  padding: 20px 0;
+  border-top: 1px dotted;
+  border-bottom: 1px dotted;
+  font-size: 50px;
+  line-height: 60px
+}
+h2 { margin: 50px 0 15px; font-size: 30px; line-height: 35px }
+h3 { margin: 45px 0 10px; font-size: 25px; line-height: 30px }
+
+html { height: 100% }
+
+kbd {
+  color: #f5f5f5;
+  background: #3c3c3c;
+  margin: 0 1px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-family: "Work Sans";
+  font-size: 17px;
+}
+
+nav { padding-top: 30px }
+
+pre, code {
+  font-family: monospace, Monaco;
+  background: #fafafa;
+  font-size: 18px
+}
+pre {
+  display: block;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #fafafa;
+  padding: 20px 20px 20px 40px;
+  border-left: 15px solid #ececec;
+  line-height: 30px;
+}
+
+time { font-style: italic }
+
+/* Component styles */
+.centre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lead { margin-top: 50px }
+
+.message {
+  background-color: #ffffe6;
+  padding: 20px 20px 20px 40px;
+  border-left: 15px solid #f5f5ba
+}
+.message::before { font-weight: bold }
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(191, 191, 191, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Page styles */
